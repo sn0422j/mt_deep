@@ -1,0 +1,12 @@
+# Directory
+/data/
+/results/
+/test/
+.vscode/
+.ipynb_checkpoints/
+__pycache__/
+
+# File
+*.ipynb
+*.ini
+
