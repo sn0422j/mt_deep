@@ -16,6 +16,7 @@ def main():
     print(results_df.groupby(['split_method', 'train_method']).agg({"accuracy": "mean"}))
 
     for split_method in ['LeaveOneSubjectOut','SessionShuffleSplit','SampleShuffleSplit']:
+    #for split_method in ['LeaveOneSubjectOut','SessionShuffleSplit','SampleShuffleSplit','LeaveOneSubjectOut_SessionShuffleSplit','LeaveOneSubjectOut_SampleShuffleSplit']:
         split_df = results_df.loc[results_df['split_method'] == split_method]
         for train_method in ['PLR','SVM','M2DCNN','3DCNN']:
             test_df = split_df.loc[split_df['train_method']==train_method].append(split_df.loc[split_df['train_method']=='Permutation']).reset_index()

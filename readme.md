@@ -25,6 +25,7 @@ We can select three split methods and four train methods.
 |split method|LeaveOneSubjectOut, SessionShuffleSplit, SampleShuffleSplit|
 |train method|PLR, SVM, M2DCNN, 3DCNN|
 
+> added other split methods: LeaveOneSubjectOut_SessionShuffleSplit, LeaveOneSubjectOut_SampleShuffleSplit
 
 ## 3. Analyze results
 ### 3.1 Permutation test
@@ -43,5 +44,6 @@ We can calculate Integrated Gradients for DL model.
 `python scripts/visualize.py`  
 `python scripts/aggregate.py`  
 
+### 3.4 (post hoc) Clustering and T-SNE
 
-
+`python scripts/clustering.py`

@@ -36,7 +36,7 @@ class Conv2d(nn.Module):
     
     def forward(self, inputs):
         outputs = self.conv_block(inputs) #conv
-        outputs = outputs.view(outputs.size(0), -1) # flatten
+        outputs = outputs.reshape(outputs.size(0), -1) # flatten
         return outputs
 
 class M2DCNN(nn.Module):

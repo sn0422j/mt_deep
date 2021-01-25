@@ -16,6 +16,7 @@ def main():
     results_df = load_DataFrame(glob('./results/*.csv'))
 
     order = ['LeaveOneSubjectOut','SessionShuffleSplit','SampleShuffleSplit']
+    #order = ['LeaveOneSubjectOut','LeaveOneSubjectOut_SessionShuffleSplit','LeaveOneSubjectOut_SampleShuffleSplit','SessionShuffleSplit','SampleShuffleSplit']
     hue_order = ['Permutation','PLR','SVM','M2DCNN','3DCNN']
 
     # Box Plot
@@ -40,7 +41,6 @@ def main():
     sns.stripplot(x='split_method',y='accuracy',hue='train_method',order=order,
                 hue_order=hue_order, jitter=True, dodge=True, color='black',size=2, data=results_df, ax=ax)
     handles, labels = ax.get_legend_handles_labels()
-    #plt.title('cosine similarity')
     ax.legend(handles[0:len(hue_order)], labels[0:len(hue_order)], frameon = False)
     ax.set_xlabel('Split Method')
     ax.set_ylabel('Accuracy')
@@ -65,7 +65,7 @@ def main():
     plt.savefig('./results/accuracy_barplot.png')
     plt.show()
 
-    f,ax = plt.subplots(1,1,figsize=(10,5), dpi=100)
+    f,ax = plt.subplots(1,1,figsize=(10,5), dpi=300)
     sns.barplot(x='split_method',y='accuracy',hue='train_method',order=order,
                 hue_order=hue_order, palette='Set1', errwidth=0, data=results_df, ax=ax)
     handles, labels = ax.get_legend_handles_labels()
@@ -74,6 +74,15 @@ def main():
     ax.set_ylabel('Accuracy', fontsize=14)
     ax.set_ylim(0,1)
     ax.set_xticklabels(['Leave One Subject Out','Session Shuffle Split','Sample Shuffle Split'], fontsize=12)
+    '''ax.set_xticklabels(
+        [
+            'Leave-One-Subject-Out CV',
+            'Leave-One-Subject-Out CV \n (Session Shuffle Split)',
+            'Leave-One-Subject-Out CV \n (Session Shuffle Split)',
+            'Session Shuffle Split',
+            'Sample Shuffle Split'
+        ], fontsize=8
+    )'''
     ax.yaxis.set_major_locator(ticker.MultipleLocator(0.1)) 
     plt.savefig('./results/accuracy_barplot_notstrip.png')
     plt.show()

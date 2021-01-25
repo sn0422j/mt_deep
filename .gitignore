@@ -9,4 +9,5 @@ __pycache__/
 # File
 *.ipynb
 *.ini
+*.log
 
